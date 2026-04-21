@@ -1375,3 +1375,15 @@ function getrestauants(restaurant){
 }
 
 getrestauants(restaurant)
+
+document.getElementById('Alcohol').addEventListener('click',()=>{
+        const result = restaurant.filter((value)=>value.alcohol);
+        document.getElementById('root').replaceChildren();
+        getrestauants(result); 
+})
+
+document.getElementById('Rating').addEventListener('click',()=>{
+  const result = restaurant.filter((value)=>value.rating > 3);
+  document.getElementById('root').replaceChildren();
+  getrestauants(result);
+})
