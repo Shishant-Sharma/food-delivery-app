@@ -15,6 +15,33 @@
         <button id="Open">Open Now</button>
     </div>
 
+    <!-- Filter option popup -->
+     <div id="filterpopup" class="hidden">
+        <h3>Choose Filter</h3>
+        <div class="filteroption">
+            <input type="radio" id="sortbyrating" name="filterOption" value="rating">
+            <label for="sortbyrating">Sort by Rating</label>
+        </div>
+        <div class="filteroption">
+            <input type="radio" id="sorthightolow" name="filterOption" value="highLow">
+            <label for="sorthightolow">High to Low (Price)</label>
+        </div>
+        <div class="filteroption">
+            <input type="radio" id="costOption" name="filterOption" value="costLowHigh">
+            <label for="costOption">Cost: Low to High</label>
+        </div>
+        <div class="filteroption">
+            <input type="radio" id="distanceoption" name="filterOption" value="distance">
+            <label for="distanceoption">Distance</label>
+        </div>
+        <div>
+            <button id="ApplyFilter">Apply</button>
+        <button id="closeFilter">Close</button>
+        </div>
+        
+     </div>
+
+    <!-- insert cards here  -->
     <div id="root"></div>
 
     <script src="app.js"></script>

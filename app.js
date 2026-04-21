@@ -1387,3 +1387,59 @@ document.getElementById('Rating').addEventListener('click',()=>{
   document.getElementById('root').replaceChildren();
   getrestauants(result);
 })
+
+document.getElementById('Offers').addEventListener('click',()=>{
+  const result = restaurant.filter((value)=>value.offers > 10);
+  document.getElementById('root').replaceChildren();
+  getrestauants(result);
+})
+
+document.getElementById('Open').addEventListener('click', () => {
+
+    const currentHour = new Date().getHours(); // 0–23
+
+    const result = restaurant.filter((value) => {
+        const open = value.Restaurant_open_time;
+        const close = value.Restaurant_close_time;
+
+        // Case 1: Normal timing (10 → 22)
+        if (open < close) {
+            return currentHour >= open && currentHour < close;
+        }
+        
+        // Case 2: Overnight timing (22 → 10)
+        else {
+            return currentHour >= open || currentHour < close;
+        }
+    });
+
+    document.getElementById('root').replaceChildren();
+    getrestauants(result);
+});
+
+document.getElementById('Filters').addEventListener('click',()=>{
+  document.getElementById("filterpopup").classList.remove("hidden");
+})
+
+document.getElementById('ApplyFilter').addEventListener('click',()=>{
+  const element = document.querySelector('input[name="filterOption"]:checked');
+  const answer = element.value;
+
+  if(answer === "rating"){
+    restaurant.sort((a,b)=> b.rating - a.rating);
+  }
+  else if(answer === "highLow"){
+    restaurant.sort((a,b)=> b.Price_for_two - a.Price_for_two);
+  }
+  else if(answer === "costLowHigh"){
+    restaurant.sort((a,b)=> a.Price_for_two - b.Price_for_two);
+  }
+  else if(answer === "distance"){
+    restaurant.sort((a,b)=> a.dictance_form_you - b.dictance_form_you);
+  }
+
+  document.getElementById('root').replaceChildren();
+  document.getElementById("filterpopup").classList.add("hidden");
+  getrestauants(restaurant);
+
+})
